@@ -44,6 +44,21 @@ public class LoginActivity extends AppCompatActivity {
                 );
             }
         });
+
+        etMail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                tvError.setVisibility(View.INVISIBLE);
+            }
+        });
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                tvError.setVisibility(View.INVISIBLE);
+            }
+        });
+
+
     }
 
     private void initializeViews() {
@@ -53,4 +68,5 @@ public class LoginActivity extends AppCompatActivity {
         tvError = findViewById(R.id.tvError);
 
     }
+
 }

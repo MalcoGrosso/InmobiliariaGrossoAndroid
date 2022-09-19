@@ -117,6 +117,7 @@ public Propietario login(String mail, final String password){
         int posición=propietarios.indexOf(propietario);
         if(posición!=-1){
             propietarios.set(posición,propietario);
+            usuarioActual = propietario;
         }
     }
 
