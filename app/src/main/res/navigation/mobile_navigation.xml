@@ -6,27 +6,90 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
+        android:id="@+id/InmueblesDetallesFragment"
+        android:name="com.mng.inmobiliariagrosso.ui.Inmuebles.InmueblesDetallesFragment"
+        android:label="Detalles de Inmueble">
+        <action
+            android:id="@+id/action_InmueblesDetallesFragment_to_nav_Inmuebles"
+            app:destination="@id/nav_Inmuebles" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_Inmuebles"
+        android:name="com.mng.inmobiliariagrosso.ui.Inmuebles.InmueblesFragment"
+        android:label="Inmuebles"
+        tools:layout="@layout/fragment_inmuebles">
+
+        <action
+            android:id="@+id/action_nav_Inmuebles_to_InmueblesDetallesFragment"
+            app:destination="@id/InmueblesDetallesFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/nav_home"
         android:name="com.mng.inmobiliariagrosso.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.mng.inmobiliariagrosso.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.mng.inmobiliariagrosso.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.mng.inmobiliariagrosso.ui.Profile.ProfileFragment"
         android:label="Perfil"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_inquilinos"
+        android:name="com.mng.inmobiliariagrosso.ui.Inquilinos.InquilinosFragment"
+        android:label="Inquilinos"
+        tools:layout="@layout/fragment_inquilinos" >
+        <action
+            android:id="@+id/action_nav_inquilinos_to_inquilinosDetallesFragment"
+            app:destination="@id/inquilinosDetallesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.mng.inmobiliariagrosso.ui.logout.LogoutFragment"
+        android:label="LogOut"
+        tools:layout="LogOut" />
+
+    <fragment
+        android:id="@+id/inquilinosDetallesFragment"
+        android:name="com.mng.inmobiliariagrosso.ui.Inquilinos.InquilinosDetallesFragment"
+        android:label="Detalles de Inquilino">
+        <action
+            android:id="@+id/action_inquilinosDetallesFragment_to_nav_inquilinos"
+            app:destination="@id/nav_inquilinos" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_contratos"
+        android:name="com.mng.inmobiliariagrosso.ui.Contratos.ContratosFragment"
+        android:label="Contratos"
+        tools:layout="@layout/fragment_contratos" >
+        <action
+            android:id="@+id/action_nav_contratos_to_contratosDetallesFragment2"
+            app:destination="@id/contratosDetallesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contratosDetallesFragment"
+        android:name="com.mng.inmobiliariagrosso.ui.Contratos.ContratosDetallesFragment"
+        android:label="Detalles de Contrato" >
+        <action
+            android:id="@+id/action_contratosDetallesFragment_to_pagosFragment2"
+            app:destination="@id/pagosFragment" />
+        <action
+            android:id="@+id/action_contratosDetallesFragment_to_nav_contratos2"
+            app:destination="@id/nav_contratos" />
+    </fragment>
+    <fragment
+        android:id="@+id/pagosFragment"
+        android:name="com.mng.inmobiliariagrosso.ui.Contratos.PagosFragment"
+        android:label="Pagos del Contrato"
+        tools:layout="@layout/fragment_pagos" >
+        <action
+            android:id="@+id/action_pagosFragment_to_contratosDetallesFragment2"
+            app:destination="@id/contratosDetallesFragment" />
+    </fragment>
+
+
 
 </navigation>
