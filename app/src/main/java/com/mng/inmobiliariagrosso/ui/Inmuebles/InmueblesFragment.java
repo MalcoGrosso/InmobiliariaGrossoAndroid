@@ -44,6 +44,7 @@ public class InmueblesFragment extends Fragment {
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                         getContext(),
                         LinearLayoutManager.VERTICAL,
+
                         false
                 );
                 recyclerViewLista.setLayoutManager(linearLayoutManager);
@@ -52,7 +53,46 @@ public class InmueblesFragment extends Fragment {
             }
         });
 
-        rViewModel.setInmueblesMutable();
+        rViewModel.setInmuebles();
         return root;
     }
 }
+
+
+
+
+
+
+
+
+
+/*
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_inmuebles, container, false);
+        mViewModel = new ViewModelProvider(this).get(InmueblesViewModel.class);
+        RVLista = (RecyclerView) rootView.findViewById(R.id.RVLista);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
+                getContext(),
+                LinearLayoutManager.VERTICAL,
+                false
+        );
+        mViewModel.getInmuebles().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
+            @Override
+            public void onChanged(List<Inmueble> inmuebles) {
+
+                RVLista.setLayoutManager(linearLayoutManager);
+                inmueblesAdapter = new InmueblesAdapter(inmuebles,rootView);
+
+                RVLista.setAdapter(inmueblesAdapter);
+            }
+        });
+        mViewModel.setInmuebles();
+        return rootView;
+    }
+
+*/
+

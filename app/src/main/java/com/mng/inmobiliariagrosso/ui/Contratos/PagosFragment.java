@@ -1,3 +1,4 @@
+/*
 package com.mng.inmobiliariagrosso.ui.Contratos;
 
 import android.os.Bundle;
@@ -56,3 +57,6 @@ public class PagosFragment extends Fragment {
     }
 
 }
+
+
+ */

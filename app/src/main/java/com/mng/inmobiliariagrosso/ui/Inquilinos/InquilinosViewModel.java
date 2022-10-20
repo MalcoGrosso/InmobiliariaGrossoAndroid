@@ -1,3 +1,5 @@
+/*
+
 package com.mng.inmobiliariagrosso.ui.Inquilinos;
 
 import androidx.lifecycle.LiveData;
@@ -29,3 +31,6 @@ public class InquilinosViewModel extends ViewModel {
 
     }
 }
+
+
+ */

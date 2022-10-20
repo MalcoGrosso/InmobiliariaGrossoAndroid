@@ -1,3 +1,4 @@
+/*
 package com.mng.inmobiliariagrosso.request;
 
 import com.mng.inmobiliariagrosso.R;
@@ -132,8 +133,8 @@ public Propietario login(String mail, final String password){
     private void cargaDatos(){
 
         //Propietarios
-        Propietario juan=new Propietario(1,23492012L,"Juan","Perez","juan@mail.com","123","2664553447", R.drawable.juan);
-        Propietario sonia=new Propietario(2,17495869L,"Sonia","Lucero","sonia@mail.com","123","266485417", R.drawable.sonia);
+        Propietario juan=new Propietario(1,"23492012L","Juan","Perez","juan@mail.com","123","2664553447", R.drawable.juan);
+        Propietario sonia=new Propietario(2,"17495869L","Sonia","Lucero","sonia@mail.com","123","266485417", R.drawable.sonia);
         propietarios.add(juan);
         propietarios.add(sonia);
 
@@ -167,3 +168,4 @@ public Propietario login(String mail, final String password){
 
     }
 }
+*/

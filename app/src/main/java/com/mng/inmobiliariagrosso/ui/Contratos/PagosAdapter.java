@@ -1,3 +1,4 @@
+/*
 package com.mng.inmobiliariagrosso.ui.Contratos;
 
 import android.content.Context;
@@ -70,3 +71,4 @@ public class PagosAdapter extends RecyclerView.Adapter<PagosAdapter.MiViewHolder
         }
     }
 }
+*/

@@ -1,27 +1,27 @@
 package com.mng.inmobiliariagrosso;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.mng.inmobiliariagrosso.databinding.ActivityMainBinding;
 import com.mng.inmobiliariagrosso.modelo.Propietario;
-import com.mng.inmobiliariagrosso.request.ApiClient;
+import com.mng.inmobiliariagrosso.request.ApiRetrofit;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,7 +71,35 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setHeader(NavigationView navigationView) {
 
+        View header = navigationView.getHeaderView(0);
+        TextView nombre = header.findViewById(R.id.tvNombre);
+        TextView email = header.findViewById(R.id.tvMail);
+        SharedPreferences sp= navigationView.getContext().getSharedPreferences("token",0);
+        String token =sp.getString("token","");
 
+        Call<Propietario> propietarioCall = ApiRetrofit.getServiceInmobiliaria().obtenerPerfil(token);
+        propietarioCall.enqueue(new Callback<Propietario>() {
+            @Override
+            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+                if(response.isSuccessful()){
+                    Propietario p = response.body();
+
+                    nombre.setText(p.getNombre());
+                    email.setText(p.getEmail());
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Propietario> call, Throwable t) {
+
+            }
+        });
+
+        //p = ApiRetrofit.getServiceInmobiliaria().obtenerPerfil(token);
+
+/*
         View header = navigationView.getHeaderView(0);
         ImageView avatar = header.findViewById(R.id.ivAvatar);
         TextView nombre = header.findViewById(R.id.tvNombre);
@@ -80,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
         avatar.setImageResource(p.getAvatar());
         nombre.setText(p.getNombre()+" "+p.getApellido());
         email.setText(p.getEmail());
+
+
+ */
     }
 
 

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mng.inmobiliariagrosso.databinding.FragmentContratosBinding;
-import com.mng.inmobiliariagrosso.modelo.Inmueble;
+import com.mng.inmobiliariagrosso.modelo.Contrato;
 
 import java.util.List;
 
@@ -37,20 +37,21 @@ public class ContratosFragment extends Fragment {
         View root = binding.getRoot();
         recyclerViewLista = binding.RVLista;
 
-        cViewModel.getRealEstatesMutable().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
+        cViewModel.getContratosMutable().observe(getViewLifecycleOwner(), new Observer<List<Contrato>>() {
             @Override
-            public void onChanged(List<Inmueble> inmuebles) {
+            public void onChanged(List<Contrato> contratos) {
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                         getContext(),
                         LinearLayoutManager.VERTICAL,
                         false
                 );
                 recyclerViewLista.setLayoutManager(linearLayoutManager);
-                adapter = new ContratosAdapter(root, inmuebles);
+                adapter = new ContratosAdapter(root, contratos);
                 recyclerViewLista.setAdapter(adapter);
             }
+
         });
-        cViewModel.setInmueblesMutable();
+        cViewModel.setInmuebles();
 
         return root;
     }

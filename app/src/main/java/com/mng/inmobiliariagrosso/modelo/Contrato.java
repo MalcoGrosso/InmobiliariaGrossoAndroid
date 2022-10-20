@@ -1,49 +1,74 @@
 package com.mng.inmobiliariagrosso.modelo;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class Contrato implements Serializable {
 
-    private int idContrato;
-    private String fechaInicio;
-    private String fechaFin;
+    private int id;
+    private String desde;
+    private String hasta;
     private double montoAlquiler;
     private Inquilino inquilino;
     private Inmueble inmueble;
 
     public Contrato() {}
-    public Contrato(int idContrato, String fechaInicio, String fechaFin, double montoAlquiler, Inquilino inquilino, Inmueble inmueble) {
-        this.idContrato = idContrato;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+    public Contrato(int id, String desde, String hasta, double montoAlquiler, Inquilino inquilino, Inmueble inmueble) {
+        this.id = id;
+        this.desde = desde;
+        this.hasta = hasta;
         this.montoAlquiler = montoAlquiler;
         this.inquilino = inquilino;
         this.inmueble = inmueble;
     }
 
     public int getIdContrato() {
-        return idContrato;
+        return id;
     }
 
-    public void setIdContrato(int idContrato) {
-        this.idContrato = idContrato;
+    public void setIdContrato(int id) {
+        this.id = id;
     }
 
     public String getFechaInicio() {
-        return fechaInicio;
+        String dia="";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date d = dateFormat.parse(desde);
+
+            dia = formato.format(d);
+        } catch (
+                ParseException e) {
+            e.printStackTrace();
+        }
+        return dia;
     }
 
     public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
+        this.desde = fechaInicio;
     }
 
     public String getFechaFin() {
-        return fechaFin;
+        String dia="";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date d = dateFormat.parse(hasta);
+
+            dia = formato.format(d);
+        } catch (
+                ParseException e) {
+            e.printStackTrace();
+        }
+        return dia;
     }
 
     public void setFechaFin(String fechaFin) {
-        this.fechaFin = fechaFin;
+        this.hasta = fechaFin;
     }
 
     public double getMontoAlquiler() {
@@ -76,11 +101,11 @@ public class Contrato implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Contrato contrato = (Contrato) o;
-        return idContrato == contrato.idContrato;
+        return id == contrato.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idContrato);
+        return Objects.hash(id);
     }
 }

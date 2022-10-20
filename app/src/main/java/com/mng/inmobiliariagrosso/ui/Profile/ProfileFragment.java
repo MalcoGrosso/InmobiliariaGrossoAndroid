@@ -1,10 +1,6 @@
 package com.mng.inmobiliariagrosso.ui.Profile;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 
 import com.mng.inmobiliariagrosso.R;
 import com.mng.inmobiliariagrosso.modelo.Propietario;
@@ -52,10 +47,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onChanged(Boolean valor) {
 
+            //    etEmail.setEnabled(valor);
                 etNombre.setEnabled(valor);
                 etApellido.setEnabled(valor);
                 etDni.setEnabled(valor);
                 etTelefono.setEnabled(valor);
+           //     etPassword.setEnabled(valor);
 
             }
         });
@@ -83,17 +80,15 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String textoBoton=  btAccion.getText().toString();
-
                 int id = Integer.parseInt(etId.getText().toString());
                 String nombre = etNombre.getText().toString();
                 String apellido= etApellido.getText().toString();
-                long dni=Long.parseLong(etDni.getText().toString()) ;
+                String dni= etDni.getText().toString() ;
                 String telefono= etTelefono.getText().toString();
                 String email= etEmail.getText().toString();
                 String password= etPassword.getText().toString();
-
-                Propietario p = new Propietario(id,dni,nombre,apellido,email,password,telefono,idAvatar);
-                vmPerfil.actualizarPropietario(textoBoton,p);
+                Propietario p = new Propietario(id,dni,nombre,apellido,email,password,telefono,0);
+                vmPerfil.actualizarPerfil(textoBoton,p);
             }
         });
 

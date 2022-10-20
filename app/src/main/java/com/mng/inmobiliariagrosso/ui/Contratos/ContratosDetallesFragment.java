@@ -1,6 +1,7 @@
 package com.mng.inmobiliariagrosso.ui.Contratos;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,26 +32,27 @@ public class ContratosDetallesFragment extends Fragment {
         binding = FragmentContratosDetallesBinding.inflate(inflater, container,false);
         View root = binding.getRoot();
 
-        cViewModel.getContratoMutable().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
+        cViewModel.getContrato().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
             @Override
             public void onChanged(Contrato c) {
                 // TODO: cargar datos de contrato en la vista
+                Log.d("salida",c.toString());
                 binding.tvId.setText(String.valueOf(c.getIdContrato()));
                 binding.tvDesde.setText(c.getFechaInicio());
                 binding.tvHasta.setText(c.getFechaFin());
-                binding.tvMonto.setText("$"+c.getMontoAlquiler());
+                binding.tvMonto.setText("$"+c.getInmueble().getPrecio());
                 binding.tvInquilino.setText(c.getInquilino().getNombre()+" "+c.getInquilino().getApellido());
                 binding.tvInmueble.setText(c.getInmueble().getDireccion());
             }
         });
-
+/*
         binding.btPagos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cViewModel.openPagos(root);
             }
         });
-
+*/
         cViewModel.setContrato(getArguments());
         return root;
     }

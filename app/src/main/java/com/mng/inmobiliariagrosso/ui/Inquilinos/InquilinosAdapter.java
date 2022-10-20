@@ -1,3 +1,4 @@
+/*
 package com.mng.inmobiliariagrosso.ui.Inquilinos;
 
 import android.content.Context;
@@ -15,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mng.inmobiliariagrosso.R;
 import com.mng.inmobiliariagrosso.modelo.Inmueble;
-import com.mng.inmobiliariagrosso.request.ApiClient;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -30,7 +30,7 @@ public class InquilinosAdapter extends RecyclerView.Adapter<InquilinosAdapter.Mi
     private Context context;
     private List<Inmueble> inmuebles;
     private View root;
-    private ApiClient api;
+
 
     public InquilinosAdapter(
             View root,
@@ -93,3 +93,4 @@ public class InquilinosAdapter extends RecyclerView.Adapter<InquilinosAdapter.Mi
 
 
 }
+*/

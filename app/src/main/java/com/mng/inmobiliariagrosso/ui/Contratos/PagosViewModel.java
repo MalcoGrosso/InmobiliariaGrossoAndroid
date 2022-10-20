@@ -1,3 +1,4 @@
+/*
 package com.mng.inmobiliariagrosso.ui.Contratos;
 
 import android.os.Bundle;
@@ -31,3 +32,5 @@ public class PagosViewModel extends ViewModel {
         this.pagosMutable.setValue(api.obtenerPagos((Contrato)b.getSerializable("contrato")));
     }
 }
+
+ */

@@ -1,39 +1,83 @@
 package com.mng.inmobiliariagrosso.ui.Inmuebles;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
-import androidx.lifecycle.LiveData;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.mng.inmobiliariagrosso.modelo.Inmueble;
-import com.mng.inmobiliariagrosso.request.ApiClient;
 
-public class InmueblesDetallesViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
-    private ApiClient api;
-    private MutableLiveData<Inmueble> iMutable;
+import com.mng.inmobiliariagrosso.request.ApiRetrofit;
 
-    public InmueblesDetallesViewModel() {
-        this.api = ApiClient.getApi();
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class InmueblesDetallesViewModel extends AndroidViewModel {
+    private MutableLiveData<Inmueble> inmueble ;
+    private Inmueble i;
+    private Context context;
+
+    public InmueblesDetallesViewModel(@NonNull Application application) {
+        super(application);
+        inmueble = new MutableLiveData<>();
+        context = application.getApplicationContext();
     }
 
-    public void setInmueble(Bundle b) {
-        iMutable.setValue((Inmueble)b.getSerializable("inmuebles"));
+    public MutableLiveData<Inmueble> getInmueble() {
+        return inmueble;
     }
 
-    public LiveData<Inmueble> getInmuebleMutable() {
-        if (iMutable == null) {
-            iMutable = new MutableLiveData<>();
-        }
-        return iMutable;
+    public void setInmueble(Bundle bundle){
+        i = (Inmueble) bundle.getSerializable("inmuebles");
+        inmueble.setValue(i);
     }
 
+
+    public void setDisponible(boolean dis){
+
+     //   i.setEstado(dis?true:false);
+        i.setEstado(dis);
+        SharedPreferences sp = context.getSharedPreferences("token",0);
+        String token = sp.getString("token","-1");
+        Log.d("salida", token);
+        Call<Inmueble> inm = ApiRetrofit.getServiceInmobiliaria().actualizarInmueble(token, i.getIdInmueble(), i.isEstado());
+        inm.enqueue(new Callback<Inmueble>() {
+            @Override
+            public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(context, "Se actualizo con exito", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Inmueble> call, Throwable t) {
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+
+
+
+
+
+
+
+/*
     public void setDisponible(boolean b) {
         Inmueble i = iMutable.getValue();
         i.setEstado(b);
         api.actualizarInmueble(i);
         iMutable.setValue(i);
     }
+ */
 }

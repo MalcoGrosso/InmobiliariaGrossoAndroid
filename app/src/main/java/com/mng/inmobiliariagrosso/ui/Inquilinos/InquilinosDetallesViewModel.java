@@ -1,3 +1,4 @@
+/*
 package com.mng.inmobiliariagrosso.ui.Inquilinos;
 
 import android.os.Bundle;
@@ -31,3 +32,5 @@ public class InquilinosDetallesViewModel extends ViewModel {
         return iMutable;
     }
 }
+
+ */

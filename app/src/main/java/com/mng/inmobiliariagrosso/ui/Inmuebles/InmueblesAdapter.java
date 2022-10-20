@@ -1,6 +1,5 @@
 package com.mng.inmobiliariagrosso.ui.Inmuebles;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,10 +28,7 @@ public class InmueblesAdapter extends RecyclerView.Adapter<InmueblesAdapter.MiVi
     private List<Inmueble> inmuebles;
     private View root;
 
-    public InmueblesAdapter(
-            View root,
-            List<Inmueble> inmuebles
-    ) {
+    public InmueblesAdapter(View root,List<Inmueble> inmuebles) {
         this.root = root;
         this.layoutInflater = LayoutInflater.from(root.getContext());
         this.context = root.getContext();
@@ -53,7 +49,7 @@ public class InmueblesAdapter extends RecyclerView.Adapter<InmueblesAdapter.MiVi
         holder.tvDetalles.setText("$"+inmu.getPrecio());
         Glide.with(context)
                 .load(inmu.getImagen())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(holder.ivFoto);
         holder.cvInmuebles.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +61,7 @@ public class InmueblesAdapter extends RecyclerView.Adapter<InmueblesAdapter.MiVi
         });
     }
 
-    @Override
+              @Override
     public int getItemCount() {
         return inmuebles.size();
     }

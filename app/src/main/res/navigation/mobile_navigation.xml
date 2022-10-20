@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_InmueblesDetallesFragment_to_nav_Inmuebles"
             app:destination="@id/nav_Inmuebles" />
+        <action
+            android:id="@+id/action_InmueblesDetallesFragment_to_nav_crearInmueble"
+            app:destination="@id/nav_crearInmueble" />
     </fragment>
     <fragment
         android:id="@+id/nav_Inmuebles"
@@ -20,7 +23,7 @@
         tools:layout="@layout/fragment_inmuebles">
 
         <action
-            android:id="@+id/action_nav_Inmuebles_to_InmueblesDetallesFragment"
+            android:id="@+id/nmueblesDetallesFragment"
             app:destination="@id/InmueblesDetallesFragment" />
     </fragment>
     <fragment
@@ -90,6 +93,15 @@
             app:destination="@id/contratosDetallesFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_crearInmueble"
+        android:name="com.mng.inmobiliariagrosso.ui.Inmuebles.CrearInmueble"
+        android:label="Crear Inmueble"
+        tools:layout="@layout/crear_inmueble_fragment" >
+        <action
+            android:id="@+id/action_nav_crearInmueble_to_InmueblesDetallesFragment2"
+            app:destination="@id/InmueblesDetallesFragment" />
+    </fragment>
 
 
 </navigation>

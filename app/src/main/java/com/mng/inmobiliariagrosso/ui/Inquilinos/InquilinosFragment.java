@@ -1,3 +1,4 @@
+/*
 package com.mng.inmobiliariagrosso.ui.Inquilinos;
 
 import android.os.Bundle;
@@ -54,3 +55,5 @@ public class InquilinosFragment extends Fragment {
         return root;
     }
 }
+
+ */
