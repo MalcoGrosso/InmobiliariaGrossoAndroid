@@ -11,16 +11,16 @@ public class Contrato implements Serializable {
     private int id;
     private String desde;
     private String hasta;
-    private double montoAlquiler;
+    private int montoM;
     private Inquilino inquilino;
     private Inmueble inmueble;
 
     public Contrato() {}
-    public Contrato(int id, String desde, String hasta, double montoAlquiler, Inquilino inquilino, Inmueble inmueble) {
+    public Contrato(int id, String desde, String hasta, int montoM, Inquilino inquilino, Inmueble inmueble) {
         this.id = id;
         this.desde = desde;
         this.hasta = hasta;
-        this.montoAlquiler = montoAlquiler;
+        this.montoM = montoM;
         this.inquilino = inquilino;
         this.inmueble = inmueble;
     }
@@ -72,11 +72,11 @@ public class Contrato implements Serializable {
     }
 
     public double getMontoAlquiler() {
-        return montoAlquiler;
+        return montoM;
     }
 
-    public void setMontoAlquiler(double montoAlquiler) {
-        this.montoAlquiler = montoAlquiler;
+    public void setMontoAlquiler(int montoM) {
+        this.montoM = montoM;
     }
 
 

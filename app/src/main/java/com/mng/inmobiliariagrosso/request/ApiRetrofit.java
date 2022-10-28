@@ -21,6 +21,7 @@ import retrofit2.http.Path;
 
 public class ApiRetrofit {
 
+    
   //  private static final String PATH="http://practicastuds.ulp.edu.ar/api/";
     private static final String PATH="http://192.168.1.100:5000/API/";
 
@@ -54,6 +55,9 @@ public class ApiRetrofit {
 
         @PUT("Propietarios/Actualizar")
         Call<Propietario> actualizarPerfil(@Header("Authorization") String token,@Body Propietario p);
+
+        @POST("Propietarios/emailPedido")
+        Call<Propietario> emailPedido(@Body String email);
 
 
         //Inmuebles

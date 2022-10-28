@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         setHeader(navigationView);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home)
                 .setOpenableLayout(drawer)
@@ -58,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -66,8 +63,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+        if("com.mng.inmobiliariagrosso:id/nav_Inmuebles".equals(navController.getCurrentBackStackEntry().getDestination().getDisplayName())){
+            navController.navigate(R.id.nav_home);
+            return true;
+        }else{
+
+            return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                    || super.onSupportNavigateUp();
+        }
+
     }
     private void setHeader(NavigationView navigationView) {
 
@@ -97,22 +101,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //p = ApiRetrofit.getServiceInmobiliaria().obtenerPerfil(token);
-
-/*
-        View header = navigationView.getHeaderView(0);
-        ImageView avatar = header.findViewById(R.id.ivAvatar);
-        TextView nombre = header.findViewById(R.id.tvNombre);
-        TextView email = header.findViewById(R.id.tvMail);
-        Propietario p = ApiClient.getApi().obtenerUsuarioActual();
-        avatar.setImageResource(p.getAvatar());
-        nombre.setText(p.getNombre()+" "+p.getApellido());
-        email.setText(p.getEmail());
-
-
- */
     }
-
-
-
 }

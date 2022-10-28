@@ -34,6 +34,7 @@
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/app_bar_main.xml" value="0.24739583333333334" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/content_main.xml" value="0.24739583333333334" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/crear_inmueble_fragment.xml" value="0.5" />
+        <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_Restablecer.xml" value="0.3482789855072464" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_blank.xml" value="0.3625" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_contract_details.xml" value="0.25052083333333336" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_contracts.xml" value="0.25052083333333336" />
@@ -43,7 +44,7 @@
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_gallery.xml" value="0.24739583333333334" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_home.xml" value="0.24739583333333334" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_inmuebles.xml" value="0.25" />
-        <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_inmuebles_detalles.xml" value="0.1" />
+        <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_inmuebles_detalles.xml" value="0.25" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_inquilinos.xml" value="0.3625" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_inquilinos_detalles.xml" value="0.3625" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_item.xml" value="0.24583333333333332" />
@@ -56,6 +57,8 @@
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_profile.xml" value="0.67" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_real_estate_details.xml" value="0.24583333333333332" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_real_estates.xml" value="0.23177083333333334" />
+        <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_restable.xml" value="0.23596014492753623" />
+        <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_restablecer.xml" value="0.2749094202898551" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_slideshow.xml" value="0.21770833333333334" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_tenant_details.xml" value="0.3625" />
         <entry key="..\:/ULP/Dispositivos Moviles/InmobiliariaGrossoAndroid/app/src/main/res/layout/fragment_tenants.xml" value="0.3625" />

@@ -40,9 +40,10 @@ public class ContratosDetallesFragment extends Fragment {
                 binding.tvId.setText(String.valueOf(c.getIdContrato()));
                 binding.tvDesde.setText(c.getFechaInicio());
                 binding.tvHasta.setText(c.getFechaFin());
-                binding.tvMonto.setText("$"+c.getInmueble().getPrecio());
+       //         binding.tvMonto.setText("$"+ c.getInmueble().getPrecio());
+                binding.tvMonto.setText("$"+ c.getMontoAlquiler());
                 binding.tvInquilino.setText(c.getInquilino().getNombre()+" "+c.getInquilino().getApellido());
-                binding.tvInmueble.setText(c.getInmueble().getDireccion());
+      //          binding.tvInmueble.setText(c.getInmueble().getDireccion());
             }
         });
 /*

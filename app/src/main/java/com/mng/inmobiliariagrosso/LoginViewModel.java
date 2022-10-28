@@ -4,13 +4,14 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.mng.inmobiliariagrosso.modelo.Propietario;
 import com.mng.inmobiliariagrosso.modelo.Usuario;
 import com.mng.inmobiliariagrosso.request.ApiRetrofit;
 
@@ -32,36 +33,16 @@ public class LoginViewModel extends AndroidViewModel {
         if (error_visibility == null) { error_visibility = new MutableLiveData<>(); }
         return error_visibility;
     }
-/*
-    public void login(String email, String pass) {
-        ApiClient api = ApiClient.getApi();
-        Propietario p = api.login(email, pass);
-
-        if (p != null) {
-            error_visibility.setValue(View.INVISIBLE);
-            Intent i = new Intent(context, MainActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(i);
-        } else {
-            error_visibility.setValue(View.VISIBLE);
-        }
-    }*/
-
     public void login(String email, String pass) {
 
         Usuario usuario = new Usuario(email, pass);
-        Log.d("222222222", email);
-        Log.d("111111111", pass);
-        Log.d("999999999", usuario.toString());
+
         Call<String> tokenPromesa = ApiRetrofit.getServiceInmobiliaria().login(usuario);
-        Log.d("555555555", tokenPromesa.toString());
         tokenPromesa.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
                     String token = response.body();
-                    Log.d("salida", token);
-
                     SharedPreferences sharedP = context.getSharedPreferences("token", 0);
                     SharedPreferences.Editor editor = sharedP.edit();
                     editor.putString("token", "Bearer " + token);
@@ -73,16 +54,41 @@ public class LoginViewModel extends AndroidViewModel {
 
 
                 }else{
-                    Log.d("salida", "sin respuesta");
+                    Toast.makeText(context, "No se pudo conectar con el Servidor", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("salida", t.getMessage());
             }
         });
 
     }
+
+    public void restablecerPassword(String email){
+        Call<Propietario> reestablecerPasswordPromesa = ApiRetrofit.getServiceInmobiliaria().emailPedido(email);
+        reestablecerPasswordPromesa.enqueue(new Callback<Propietario>() {
+            @Override
+            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(context, "Se envio email para reestablecer la contraseña.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(context, "Sin respuesta.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Propietario> call, Throwable t) {
+                Toast.makeText(context, "Ocurrio un error en el servidor.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
+
+
+
 
 }

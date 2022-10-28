@@ -56,7 +56,7 @@ public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.MiVi
      //   Inmueble i = inmuebles.get(position);
         Contrato c = contratos.get(position);
         holder.tvDireccion.setText(c.getInmueble().getDireccion());
-        holder.tvDetalles.setText("$"+c.getInmueble().getPrecio());
+        holder.tvDetalles.setText("$"+c.getMontoAlquiler());
         Glide.with(root.getContext())
                 .load(c.getInmueble().getImagen())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -96,25 +95,38 @@ public class CrearInmuebleViewModel extends AndroidViewModel {
 
 
     public void respuestaDeCamara(int requestCode, int resultCode, @Nullable Intent data, int REQUEST_IMAGE_CAPTURE) {
-        Log.d("salida", requestCode + "");
+
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            //Recupero los datos provenientes de la camara.
             Bundle extras = data.getExtras();
-            //Casteo a bitmap lo obtenido de la camara.
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             ByteArrayOutputStream baos=new ByteArrayOutputStream();
-            imageBitmap.compress(Bitmap.CompressFormat.JPEG,100, baos);
-
-            //Rutina para convertir a un arreglo de byte los datos de la imagen
+            imageBitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
             byte [] b=baos.toByteArray();
             foto.setValue(b);
 
         }
     }
 
+    public String obtenerLatitud(){
+
+        SharedPreferences sp = context.getSharedPreferences("lati", 0);
+        String latitud = sp.getString("lati", "-1");
+        return  latitud;
+    }
+
+    public String obtenerLongitud(){
+
+        SharedPreferences sp = context.getSharedPreferences("longi", 0);
+        String longitud = sp.getString("longi", "-1");
+        return  longitud;
+    }
+
+
     public void crearInmueble(Inmueble inmueble) {
-        if(foto.getValue()!=null ) {
-            Log.d("paso", inmueble.toString());
+
+
+
+        if(foto.getValue()!=null) {
             SharedPreferences sp = context.getSharedPreferences("token", 0);
             String token = sp.getString("token", "-1");
             Call<Inmueble> inm = ApiRetrofit.getServiceInmobiliaria().crearInmueble(token, inmueble);
@@ -125,7 +137,7 @@ public class CrearInmuebleViewModel extends AndroidViewModel {
                         inmue.postValue(response.body());
                         Toast.makeText(context, "Se guardo con exito", Toast.LENGTH_SHORT).show();
                     } else {
-                        Log.d("paso", response.code() + " " + response.message() + " " + response.body());
+                        Toast.makeText(context, "No se pudo guardar", Toast.LENGTH_SHORT).show();
                     }
                 }
 

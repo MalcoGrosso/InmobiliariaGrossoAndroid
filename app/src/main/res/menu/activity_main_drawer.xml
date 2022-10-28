@@ -21,10 +21,6 @@
             android:icon="@drawable/baseline_location_city_24"
             android:title="Crear Inmueble"
             />
-        <item
-            android:id="@+id/nav_inquilinos"
-            android:icon="@drawable/baseline_people_alt_24"
-            android:title="Inquilinos" />
 
         <item
             android:id="@+id/nav_contratos"

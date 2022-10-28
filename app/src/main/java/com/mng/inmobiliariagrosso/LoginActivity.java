@@ -1,9 +1,5 @@
 package com.mng.inmobiliariagrosso;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +13,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,12 +27,15 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel viewModel;
     private EditText etMail, etPassword;
     private Button btLogin;
+    private Button btRestablecer;
     private TextView tvError;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        context = this.getApplicationContext();
         solicitarPermisos();
         initializeViews();
         viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())
@@ -54,6 +58,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        btRestablecer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(etMail.getText().toString().equals("") || etMail.getText().toString()==null ){
+                    Toast.makeText(context, "El campo e-mail no debe ser vacio.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    viewModel.restablecerPassword(etMail.getText().toString());
+                }
+            }
+        });
+
+
+
+
         etMail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -74,10 +93,10 @@ public class LoginActivity extends AppCompatActivity {
         etMail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btLogin = findViewById(R.id.btLogin);
+        btRestablecer = findViewById(R.id.btRestablecer);
         tvError = findViewById(R.id.tvError);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager
-                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mDetectarAgitar = new DetectarAgitar();
 
     }

@@ -20,7 +20,7 @@
         tools:context=".ui.Inmuebles.InmueblesDetallesFragment"
         android:background="@color/white"
         android:paddingTop="8dp"
-        android:paddingBottom="16dp">
+        android:paddingBottom="150dp">
 
         <TextView
             android:id="@+id/tvAddress"
@@ -119,6 +119,55 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/labelLatitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
+            android:labelFor="@id/tvLatitud"
+            android:text="Latitud"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvLatitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="8dp"
+            android:text="Latitud"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/labelLongitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
+            android:labelFor="@id/tvLongitud"
+            android:text="Longitud"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvLongitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="8dp"
+            android:text="Longitud"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+
+        <TextView
             android:id="@+id/labelAmbientes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -143,41 +192,18 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/labelPropietario"
-            android:labelFor="@id/tvPropietario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Propietario"
-            android:textAlignment="center"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="8dp"/>
-
-        <TextView
-            android:id="@+id/tvPropietario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="8dp"
-            android:text="Propietario"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
             android:id="@+id/labelDisponible"
-            android:labelFor="@id/cbDisponible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
+            android:labelFor="@id/cbDisponible"
             android:text="Disponibilidad"
             android:textAlignment="center"
-            android:textSize="22sp"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="8dp"/>
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
 
         <CheckBox
             android:id="@+id/cbDisponible"

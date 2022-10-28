@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,7 +11,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.mng.inmobiliariagrosso.modelo.Inmueble;
-
 import com.mng.inmobiliariagrosso.request.ApiRetrofit;
 
 import retrofit2.Call;
@@ -40,13 +38,12 @@ public class InmueblesDetallesViewModel extends AndroidViewModel {
     }
 
 
+
     public void setDisponible(boolean dis){
 
-     //   i.setEstado(dis?true:false);
         i.setEstado(dis);
         SharedPreferences sp = context.getSharedPreferences("token",0);
         String token = sp.getString("token","-1");
-        Log.d("salida", token);
         Call<Inmueble> inm = ApiRetrofit.getServiceInmobiliaria().actualizarInmueble(token, i.getIdInmueble(), i.isEstado());
         inm.enqueue(new Callback<Inmueble>() {
             @Override
@@ -65,19 +62,4 @@ public class InmueblesDetallesViewModel extends AndroidViewModel {
 
     }
 
-
-
-
-
-
-
-
-/*
-    public void setDisponible(boolean b) {
-        Inmueble i = iMutable.getValue();
-        i.setEstado(b);
-        api.actualizarInmueble(i);
-        iMutable.setValue(i);
-    }
- */
 }

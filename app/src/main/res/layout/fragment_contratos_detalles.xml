@@ -140,34 +140,11 @@
             android:text="Inquilino"
             android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/lbInmueble"
-            android:labelFor="@id/tvInmueble"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Inmueble"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="8dp"/>
-
-        <TextView
-            android:id="@+id/tvInmueble"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:layout_marginTop="8dp"
-            android:text="Inmueble"
-            android:textSize="18sp" />
-
         <Button
             android:id="@+id/btPagos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pagos"/>
+            android:text="Pagos"
+            android:enabled="false"/>
     </LinearLayout>
 </ScrollView>

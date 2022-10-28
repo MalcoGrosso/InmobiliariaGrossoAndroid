@@ -31,14 +31,6 @@ public class InmueblesDetallesFragment extends Fragment {
         rViewModel = new ViewModelProvider(this).get(InmueblesDetallesViewModel.class);
         binding = FragmentInmueblesDetallesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-/*
-        binding.cbDisponible.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                rViewModel.setDisponible(b);
-            }
-        });
-*/
         rViewModel.getInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble i) {
@@ -47,14 +39,15 @@ public class InmueblesDetallesFragment extends Fragment {
                 binding.tvPrecio.setText(String.valueOf(i.getPrecio()));
                 binding.tvTipo.setText(i.getTipo());
                 binding.tvUso.setText(i.getUso());
+                binding.tvLatitud.setText(i.getLatitud());
+                binding.tvLongitud.setText(i.getLongitud());
                 binding.tvAmbientes.setText(String.valueOf(i.getAmbientes()));
-                binding.tvPropietario.setText(i.getPropietario().getNombre()+" "+i.getPropietario().getApellido());
-      //          binding.cbDisponible.setChecked(i.isEstado()==false?false:true);
                 binding.cbDisponible.setChecked(i.isEstado());
 
                 Glide.with(root.getContext())
                         .load(i.getImagen())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
+       //                 .encodeQuality(100)
                         .into(binding.ivPhoto);
 
                 binding.cbDisponible.setOnClickListener(new View.OnClickListener() {

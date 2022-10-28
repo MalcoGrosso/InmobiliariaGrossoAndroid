@@ -2,9 +2,9 @@ package com.mng.inmobiliariagrosso.ui.home;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -15,7 +15,6 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -26,6 +25,7 @@ public class LeerMapa implements OnMapReadyCallback {
     private LatLng inmobiliria;
     private Context context;
     private GoogleMap map;
+
 
 
     public LeerMapa(Context context) {
@@ -61,6 +61,17 @@ public class LeerMapa implements OnMapReadyCallback {
             public void onSuccess(Location location) {
                 if (location != null) {
                     LatLng ua= new LatLng(location.getLatitude(),location.getLongitude());
+                    double lati = ua.latitude;
+                    double longi = ua.longitude;
+                    SharedPreferences latitud = context.getSharedPreferences("lati", 0);
+                    SharedPreferences.Editor editor = latitud.edit();
+                    editor.putString("lati", String.valueOf(lati));
+                    editor.commit();
+                    SharedPreferences longitud = context.getSharedPreferences("longi", 0);
+                    SharedPreferences.Editor edi = longitud.edit();
+                    edi.putString("longi", String.valueOf(longi));
+                    edi.commit();
+
                     map.addMarker(new MarkerOptions().position(ua))
 
                             .setTitle("Mi ubicacion");

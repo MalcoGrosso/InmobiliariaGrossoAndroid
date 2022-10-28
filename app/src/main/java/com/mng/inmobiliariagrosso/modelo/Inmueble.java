@@ -19,6 +19,16 @@ public class Inmueble implements Serializable {
     private String latitud;
     private String longitud;
 
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    private String ubicacion;
+
 
     public Inmueble(int id, String direccion, String uso, String tipo, int ambientes, double precio, Propietario propietario, boolean disponible, String imagen) {
         this.id = id;
@@ -32,7 +42,7 @@ public class Inmueble implements Serializable {
         this.imagen = imagen;
     }
 
-    public Inmueble(int id, String direccion, String uso, String tipo, int ambientes, double precio, Propietario propietario, boolean disponible, String imagen , int idPropietario, int superficie, String latitud, String longitud) {
+    public Inmueble(int id, String direccion, String uso, String tipo, int ambientes, double precio, Propietario propietario, boolean disponible, String imagen , int idPropietario, int superficie, String latitud, String longitud, String ubicacion) {
         this.id = id;
         this.direccion = direccion;
         this.uso = uso;
@@ -46,6 +56,7 @@ public class Inmueble implements Serializable {
         this.superficie = superficie;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.ubicacion = ubicacion;
     }
 
 
@@ -159,6 +170,7 @@ public class Inmueble implements Serializable {
         Inmueble inmueble = (Inmueble) o;
         return id == inmueble.id;
     }
+
 
     @Override
     public int hashCode() {
