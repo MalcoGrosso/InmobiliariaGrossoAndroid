@@ -47,12 +47,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onChanged(Boolean valor) {
 
-            //    etEmail.setEnabled(valor);
+                etEmail.setEnabled(valor);
                 etNombre.setEnabled(valor);
                 etApellido.setEnabled(valor);
                 etDni.setEnabled(valor);
                 etTelefono.setEnabled(valor);
-           //     etPassword.setEnabled(valor);
+                etPassword.setEnabled(valor);
 
             }
         });
